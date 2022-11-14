@@ -1,0 +1,13 @@
+.container {
+    background-color: bisque;
+    margin: 1rem;
+    padding: .5rem;
+}
+
+.container__input {
+    margin-bottom: .5rem;
+}
+
+.container__li {
+    padding: .5rem;
+}
