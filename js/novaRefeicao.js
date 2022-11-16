@@ -7,6 +7,7 @@ adicionaRefeicao.addEventListener('click', (e) => {
     i++;
 })
 
+
 function criaTabela(main) {
     let section = document.createElement('section');
     section.classList.add('container');
@@ -19,6 +20,7 @@ function criaTabela(main) {
 
     let buttonOk = document.createElement('button');
     buttonOk.innerText = 'OK';
+    buttonOk.classList.add('btn__input')
 
     buttonOk.addEventListener('click', () => {   
         adicionarAlimento(input, ul);
@@ -46,12 +48,20 @@ function adicionarAlimento(input, ul) {
         li.innerText = input.value;        
         
         let btnEditar = document.createElement('button');
-        btnEditar.innerText = 'Editar';
-        btnEditar.setAttribute('data-btnEditar', '');
+        btnEditar.classList.add('btn__editar');
+
+        let i = document.createElement('i');
+        i.classList.add('fa-sharp');
+        i.classList.add('fa-solid');
+        i.classList.add('fa-pen');
+        i.setAttribute('data-btnEditar', '')
+
+        btnEditar.appendChild(i);
 
         criaModalEditar(btnEditar);
 
         li.appendChild(btnEditar);
+        li.appendChild(adicionaMacro());
         ul.appendChild(li);
         
         input.value = '';
@@ -63,8 +73,8 @@ function editarAlimento() {
 
         capturaEditar.forEach( (elemento) => {
             elemento.addEventListener('click', (e) => {
-                const capturaDialog = e.target.querySelector('dialog');
-                
+                const capturaPai = e.target.parentNode;
+                const capturaDialog = capturaPai.querySelector('dialog');
                 capturaDialog.showModal();
             })
         })
@@ -94,4 +104,22 @@ function criaModalEditar(pai) {
     dialog.appendChild(labelGordura);
 
     pai.appendChild(dialog);
+}
+
+function adicionaMacro() {
+    let divMacros = document.createElement('div');
+    divMacros.classList.add('div__macro');
+    let pCarbo = document.createElement('p');
+    let pProte = document.createElement('p');
+    let pGord = document.createElement('p');
+
+    pCarbo.innerText = 'C: 0';
+    pProte.innerText = 'P: 0';
+    pGord.innerText = 'G: 0';
+
+    divMacros.appendChild(pCarbo);
+    divMacros.appendChild(pProte);
+    divMacros.appendChild(pGord);
+
+    return divMacros;
 }

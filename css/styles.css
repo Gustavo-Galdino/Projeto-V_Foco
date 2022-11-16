@@ -1,13 +1,76 @@
+:root {
+    --color1: #f0cb96;
+    --color2: #f4d8af;
+    --color3: #f8e5c8;
+    --color4: #fbf2e1;
+    --color5: #fffffa;
+}
+
+body {
+    background-color: var(--color4);
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto 1fr;
+}
+
+main {
+    margin-left: 3rem;
+    grid-area: 2 / 2;
+}
+
+a {
+    text-decoration: none;
+}
+
+.container__btnAdc {
+    margin-bottom: 1rem;
+}
+
 .container {
-    background-color: bisque;
-    margin: 1rem;
+    background-color: #f0cb96;
+    border-radius: 5px;
+    border: 1px solid var(--color5);
+    margin-bottom: 1rem;
     padding: .5rem;
+    width: 80%; 
 }
 
 .container__input {
     margin-bottom: .5rem;
+    width: 30%;
+    border-radius: 5px 0 0 5px;
+    border-right: 0;
+}
+
+.btn__input {
+    border-radius: 0 5px 5px 0;
+    border-left: 0;
 }
 
 .container__li {
+    display: grid;
+    grid-template-columns: 100px 1fr auto;
+    margin-bottom: .5rem;
+    margin-top: .5rem;
     padding: .5rem;
+    background-color: var(--color3);
+    border-radius: 8px;
+    width: 50%;
 }
+
+.btn__editar {
+    background: none;
+    border: none;
+    grid-column: 3;
+}
+
+.fa-solid:hover {
+    border: 1px solid black;
+}
+
+.div__macro {
+    grid-area: 1 / 2;
+    display: flex;
+    justify-content: space-evenly;
+}
+
