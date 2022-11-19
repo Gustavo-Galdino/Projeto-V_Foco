@@ -1,10 +1,12 @@
 const adicionaRefeicao = document.querySelector('[data-refeicao]');
+const nomeRefeicao = document.querySelector('#nomeRefeicao');
 
-let numRef = 1;
 
 adicionaRefeicao.addEventListener('click', (e) => {
-    criaTabela(e.target.parentNode)
-    numRef++;
+    if (nomeRefeicao.value != ''){
+        criaTabela(e.target.parentNode)
+        nomeRefeicao.value = '';
+    }
 })
 
 
@@ -13,6 +15,7 @@ function criaTabela(main) {
     section.classList.add('container__refeicao');
 
     let div = document.createElement('div');
+    div.classList.add('container__divAdcAlimento');
 
     let input = document.createElement('input');
     input.setAttribute('placeholder', 'Adicionar Alimento!')
@@ -24,12 +27,18 @@ function criaTabela(main) {
 
     let div2 = document.createElement('div');
 
+    let divInput = document.createElement('div');
+
     let ul = document.createElement('ul');
-    ul.innerText = `Refeição ${numRef}`;
+    ul.innerText = nomeRefeicao.value;
     ul.classList.add('container__ul');
 
     let h2 = document.createElement('h2');
     h2.innerText = 'Total\n0 Kcal'
+
+    let btnDeletar = document.createElement('button');
+    btnDeletar.innerText = 'X';
+    btnDeletar.classList.add('btn__deletar')
 
     buttonOk.addEventListener('click', () => {   
         adicionarAlimento(input, ul);
@@ -37,9 +46,13 @@ function criaTabela(main) {
         excluirAlimento();
     })
 
+    deletaTabela(section, btnDeletar);
+
     section.appendChild(div);
-    div.appendChild(input);
-    div.appendChild(buttonOk);
+    divInput.appendChild(input);
+    divInput.appendChild(buttonOk);
+    div.appendChild(divInput);
+    div.appendChild(btnDeletar);
     section.appendChild(div2);
     ul.appendChild(h2);
     div2.appendChild(ul);
@@ -305,4 +318,10 @@ function somaValores(pai) {
     somaTotal = (somaCarbo * 4) + (somaProteina * 4) + (somaGordura * 9);
 
     pegaTotal.innerText = `Total\n ${somaTotal} Kcal`;
+}
+
+function deletaTabela(capturaSection, btnDeletar) {
+    btnDeletar.addEventListener('click', () => {
+        capturaSection.remove();
+    })
 }

@@ -11,9 +11,13 @@
     width: 80%; 
 }
 
+.container__divAdcAlimento {
+    display: flex;
+    justify-content: space-between;
+}
+
 .container__input {
     margin-bottom: .5rem;
-    width: 30%;
     border-radius: 5px 0 0 5px;
     border-right: 0;
 }
@@ -21,6 +25,19 @@
 .btn__input {
     border-radius: 0 5px 5px 0;
     border-left: 0;
+}
+
+.btn__deletar {
+    background: none;
+    border: none;
+    font-weight: 700;
+    font-size: 16px;
+    
+}
+
+.btn__deletar:hover {
+    font-size: 14px;
+    border: 1px solid black;
 }
 
 .container__ul {
@@ -31,7 +48,7 @@
 .container__ul h2 {
     grid-column: 2;
     text-align: center;
-    font-weight: bold;
+    font-weight: 700;
 }
 
 .container__li {
